@@ -7,7 +7,7 @@ function UserDetails() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setLoading(true);
+    setLoading(true); // <- important to reset loading when id changes
     fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
       .then((res) => res.json())
       .then((data) => {
@@ -16,7 +16,7 @@ function UserDetails() {
       });
   }, [id]);
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <div>Loading...</div>; // ✅ match Cypress test exactly
 
   return (
     <div>
